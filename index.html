@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script type="text/javascript">
+		function getIntentURL(type) {
+			switch(type) {
+				case 'phonepe':
+					return "phonepe://pay?pn=Razorpay&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=razorpay416.rzp@icici";
+				case 'gpay':
+					return "gpay://upi/pay?pn=Razorpay&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=razorpay416.rzp@icici";
+				case 'paytm':
+					return "paytmmp://pay?pn=Razorpay&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=razorpay416.rzp@icici";
+				default :
+					return "upi://pay?pn=Razorpay&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=razorpay416.rzp@icici";
+
+
+			}
+		}
+		function onButtonClick(type) {
+			let windowContext = window.open(getIntentURL(type));
+
+
+			setTimeout(() => {
+				if (!windowContext.closed) {
+					windowContext.close();
+					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+				}
+			}, 3000);			
+
+
+		}
+	</script>
+</head>
+<body>
+	<button onclick="onButtonClick('phonepe')">PhonePe</button>
+	<button onclick="onButtonClick('gpay')">GPay</button>
+	<button onclick="onButtonClick('paytm')">Paytm</button>
+	<button onclick="onButtonClick('others')">Other</button>
+
+	<div id="mIntentMsg"></div>
+</body>
+</html>
