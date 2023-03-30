@@ -48,10 +48,7 @@
 			iframe.style.display = "none";
 			iframe.id = "appCheck"
 			iframe.src = getIntentURL(type);
-			iframe.onerror = function () {
-				document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`;
-				document.getElementById("appCheck").remove()
-			}()
+			iframe.onerror = document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`;
 
 			document.body.appendChild(iframe);
 
