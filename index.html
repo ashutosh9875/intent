@@ -35,6 +35,18 @@
 
 
 		}
+		
+		function randomCheck() {
+			const phonePeURL = "phonepe://pay?pn=PhonePe&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=8565935689@ybl";
+			
+			const iframe = document.createElement("iframe");
+			
+			iframe.style.display = "none";
+			
+			iframe.src = phonePeURL;
+			
+			document.body.appendChild(iframe);
+		}
 	</script>
 </head>
 <body>
@@ -43,6 +55,8 @@
 	<button onclick="onButtonClick('paytm')">Paytm</button>
 	<button onclick="onButtonClick('others')">Other</button>
 
+	
+	<button onclick="randomCheck()">Check PhonePe</button>
 	<div id="mIntentMsg"></div>
 </body>
 </html>
