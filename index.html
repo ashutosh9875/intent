@@ -4,6 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
+	<style>
+		button {
+			padding: 12px;
+		}
+	</style>
 	<script type="text/javascript">
 		function getIntentURL(type) {
 			switch(type) {
@@ -36,24 +41,39 @@
 
 		}
 		
-		function randomCheck() {
+		function checkWithIframe(type) {
 			const phonePeURL = "phonepe://pay?pn=PhonePe&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=8565935689@ybl";
 			
 			const iframe = document.createElement("iframe");
-			
 			iframe.style.display = "none";
-			
-			iframe.src = phonePeURL;
-			
+			iframe.id = "appCheck"
+			iframe.src = getIntentURL(type);
+			iframe.onerror = function () {
+				document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`;
+				document.getElementById("appCheck").remove()
+			}()
+
 			document.body.appendChild(iframe);
+
 		}
 	</script>
 </head>
 <body>
-	<button onclick="onButtonClick('phonepe')">PhonePe</button>
-	<button onclick="onButtonClick('gpay')">GPay</button>
-	<button onclick="onButtonClick('paytm')">Paytm</button>
-	<button onclick="onButtonClick('others')">Other</button>
+	<div style="display: block; border:1px solid black; padding: 24px">
+
+		<button onclick="onButtonClick('phonepe')">PhonePe</button>
+		<button onclick="onButtonClick('gpay')">GPay</button>
+		<button onclick="onButtonClick('paytm')">Paytm</button>
+		<button onclick="onButtonClick('others')">Other</button>
+	</div>
+
+
+	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
+		<button onclick="checkWithIframe('phonepe')">PhonePe</button>
+		<button onclick="checkWithIframe('gpay')">GPay</button>
+		<button onclick="checkWithIframe('paytm')">Paytm</button>
+		<button onclick="checkWithIframe('others')">Other</button>
+	</div>
 
 	
 	<button onclick="randomCheck()">Check PhonePe</button>
