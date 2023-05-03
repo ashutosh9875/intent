@@ -75,7 +75,7 @@
 		}
 		
 		function checkWithIframe(type) {
-			const phonePeURL = "phonepe://pay?pn=PhonePe&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=8565935689@ybl";
+			const phonePeURL = getIntentURL(type);
 			
 			const iframe = document.createElement("iframe");
 			iframe.style.display = "none";
@@ -90,11 +90,11 @@
 			document.body.appendChild(iframe);
 
 
-			setTimeout(() => {
+			/*setTimeout(() => {
 					document.getElementById("appCheck").contentWindow.onerror = function () {
 						alert("Error")
 					}()
-			}, 2000);			
+			}, 2000);*/			
 
 		}
 	</script>
