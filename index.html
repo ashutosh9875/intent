@@ -38,7 +38,26 @@
 				}
 			}, 2500);			
 
+		}
+		
+		function onButtonClick2(type) {
+			try {
+				let windowContext = window.open(getIntentURL(type));
 
+
+				setTimeout(() => {
+					if(windowContext) {
+						console.log("Allowed")
+					}
+					if (!windowContext.closed) {
+						windowContext.close();
+						document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+					}
+				}, 2500);			
+			}
+			catch(err) {
+				console.log("Here is the error", err);
+			}
 		}
 		
 		function checkWithIframe(type) {
@@ -73,6 +92,14 @@
 		<button onclick="onButtonClick('gpay')">GPay</button>
 		<button onclick="onButtonClick('paytm')">Paytm</button>
 		<button onclick="onButtonClick('others')">Other</button>
+	</div>
+	
+	<div style="display: block; border:1px solid black; padding: 24px">
+
+		<button onclick="onButtonClick2('phonepe')">PhonePe</button>
+		<button onclick="onButtonClick2('gpay')">GPay</button>
+		<button onclick="onButtonClick2('paytm')">Paytm</button>
+		<button onclick="onButtonClick2('others')">Other</button>
 	</div>
 
 
