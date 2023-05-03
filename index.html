@@ -44,7 +44,10 @@
 			try {
 				let windowContext = window.open(getIntentURL(type));
 
-
+				windowContext.addEventListener('error', function(event) {
+				  console.log("Error occurred while opening the window:", event);
+				});
+				
 				setTimeout(() => {
 					if(windowContext) {
 						console.log("Allowed")
