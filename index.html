@@ -32,8 +32,12 @@
 
 			setTimeout(() => {
 				if (!windowContext.closed) {
+					console.log("Inside tab not closed");
 					windowContext.close();
 					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+				}
+				else {
+					console.log("Tab already closed");
 				}
 			}, 2500);			
 
