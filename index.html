@@ -31,6 +31,7 @@
 			let windowContext = window.open(getIntentURL(type), '_blank');
 
 			setInterval(() => {
+				console.log("Visibility State:: ", document.visibilityState)
 				window.focus();
 			    console.log("Has Focus:: ", window.document.hasFocus());
 			}, 5000);
