@@ -30,6 +30,10 @@
 		function onButtonClick(type) {
 			let windowContext = window.open(getIntentURL(type), '_blank');
 
+			setInterval(() => {
+			    console.log("Has Focus:: ", window.document.hasFocus());
+			}, 5000);
+			
 			setTimeout(() => {
 				if (!windowContext.closed) {
 					console.log("Inside tab not closed");
