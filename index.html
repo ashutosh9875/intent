@@ -100,13 +100,22 @@
 			iframe.style.display = "none";
 			iframe.id = "appCheck"
 			iframe.src = getIntentURL(type);
-			iframe.onError = iframe.onerror = function (e) {
+			/*iframe.onError = iframe.onerror = function (e) {
 				//debugger;
 				alert("Error")
 				document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`;
-			}()
+			}()*/
 
 			document.body.appendChild(iframe);
+			
+			setTimeout(() => {
+					if (document.visibilityState === "visible") {
+						document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+					}
+					else {
+						document.getElementById("mIntentMsg").textContent = `${type} App opened on device`
+					}
+			}, 2500);
 
 
 			/*setTimeout(() => {
@@ -137,10 +146,10 @@
 	
 
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<button onclick="checkWithIframe('phonepe')">PhonePe</button>
-		<button onclick="checkWithIframe('gpay')">GPay</button>
-		<button onclick="checkWithIframe('paytm')">Paytm</button>
-		<button onclick="checkWithIframe('others')">Other</button>
+		<button onclick="checkWithIframe('phonepe')">PhonePe iFrame</button>
+		<button onclick="checkWithIframe('gpay')">GPay iFrame</button>
+		<button onclick="checkWithIframe('paytm')">Paytm iFrame</button>
+		<button onclick="checkWithIframe('others')">Other iFrame</button>
 	</div>
 
 	
