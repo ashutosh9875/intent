@@ -10,6 +10,10 @@
 		}
 	</style>
 	<script type="text/javascript">
+		function onLoad(){
+			(window & window.navigator) && alert(window.navigator.userAgent);
+		}()
+		
 		function getIntentURL(type) {
 			switch(type) {
 				case 'phonepe':
