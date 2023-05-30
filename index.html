@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		function onLoad(){
 			(window & window.navigator) && alert(window.navigator.userAgent);
-		}()
+		}
 		
 		function getIntentURL(type) {
 			switch(type) {
@@ -129,6 +129,8 @@
 			}, 2000);*/			
 
 		}
+		
+		window.onload = onLoad();
 	</script>
 </head>
 <body>
