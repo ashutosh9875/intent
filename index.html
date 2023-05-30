@@ -10,8 +10,10 @@
 		}
 	</style>
 	<script type="text/javascript">
-		function onLoad(){
-			(window & window.navigator) && alert(window.navigator.userAgent);
+		function onLoadFunc(){
+			debugger;
+			console.log(window.navigator.userAgent)
+			alert(window.navigator.userAgent);
 		}
 		
 		function getIntentURL(type) {
@@ -129,11 +131,9 @@
 			}, 2000);*/			
 
 		}
-		
-		window.onload = onLoad();
 	</script>
 </head>
-<body onload="onLoad()">
+<body onload="onLoadFunc()">
 	<div style="display: block; border:1px solid black; padding: 24px">
 
 		<button onclick="onButtonClick('phonepe')">PhonePe</button>
