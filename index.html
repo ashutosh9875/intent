@@ -102,6 +102,16 @@
 		function checkWithIframe(type) {
 			const phonePeURL = getIntentURL(type);
 			
+			setTimeout(() => {
+				if (document.visibilityState === "visible") {
+					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+				}
+				else {
+					document.getElementById("mIntentMsg").textContent = `${type} App opened on device`
+				}
+				alert(document.visibilityState)
+			}, 2500);
+			
 			const iframe = document.createElement("iframe");
 			iframe.style.display = "none";
 			iframe.id = "appCheck"
@@ -114,14 +124,7 @@
 
 			document.body.appendChild(iframe);
 			
-			setTimeout(() => {
-					if (document.visibilityState === "visible") {
-						document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-					}
-					else {
-						document.getElementById("mIntentMsg").textContent = `${type} App opened on device`
-					}
-			}, 2500);
+
 
 
 			/*setTimeout(() => {
