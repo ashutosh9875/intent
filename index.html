@@ -11,9 +11,9 @@
 	</style>
 	<script type="text/javascript">
 		function onLoadFunc(){
-			debugger;
+			//debugger;
 			console.log(window.navigator.userAgent)
-			alert(window.navigator.userAgent);
+			//alert(window.navigator.userAgent);
 		}
 		
 		function getIntentURL(type) {
@@ -137,6 +137,7 @@
 		
 		function handleFailedDeepLink() {
 			console.log("Failed to launch deeplink URL because the scheme does not have a registered handler.");
+			alert("Failed to launch")
 		}
 		function openDeepLink(type) {
 			const iframe = document.createElement("iframe");
