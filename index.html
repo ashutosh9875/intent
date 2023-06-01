@@ -64,6 +64,7 @@
 			    console.log("Has Focus:: ", window.document.hasFocus());
 			}, 5000);*/
 			
+			debugger;
 			setTimeout(() => {
 				if (!windowContext.closed) {
 					alert("Inside tab not closed " + window.location.href);
@@ -80,7 +81,7 @@
 		function checkWithIframe(type) {
 			const phonePeURL = getIntentURL(type);
 			
-			setInterval(() => {
+			setTimeout(() => {
 				if (document.visibilityState === "visible") {
 					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
 				}
