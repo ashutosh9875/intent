@@ -138,7 +138,7 @@
 		function handleFailedDeepLink() {
 			console.log("Failed to launch deeplink URL because the scheme does not have a registered handler.");
 		}
-		function openDeepLink (type) {
+		function openDeepLink(type) {
 			const iframe = document.createElement("iframe");
 			iframe.style.display = "none";
 			iframe.id = "appCheck"
@@ -153,10 +153,7 @@
 			}, 2000); // Set a timeout to check if the DeepLink opened within a specific time frame
 
 		}
-
-// Usage:
-openDeepLink('myapp://');
-		}
+	
 	</script>
 </head>
 <body onload="onLoadFunc()">
