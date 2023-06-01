@@ -56,47 +56,24 @@
 		}
 		
 		function onButtonClick2(type) {
-			try {
-				window.location.href = getIntentURL(type);
+			let windowContext = window.open(getIntentURL(type), '_blank');
 
-				document.addEventListener("visibilitychange", function() {
-				  if (document.hidden) {
-				      console.log("Unsuccessfull")
-					  document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-				  } else {
-				      console.log("Successfull")
-					  document.getElementById("mIntentMsg").textContent = `${type} App supported on device`
-				  }
-				});
-				
-				/*document.addEventListener("focus", function() {
-				  if (document.hidden) {
-				      console.log("Unsuccessfull")
-					  document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-				  } else {
-				      console.log("Successfull")
-					  document.getElementById("mIntentMsg").textContent = `${type} App supported on device`
-				  }
-				});
-				let windowContext = window.open(getIntentURL(type));
-
-				windowContext.addEventListener('error', function(event) {
-				  console.log("Error occurred while opening the window:", event);
-				});
-				
-				setTimeout(() => {
-					if(windowContext) {
-						console.log("Allowed")
-					}
-					if (!windowContext.closed) {
-						windowContext.close();
-						document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-					}
-				}, 2500);*/			
-			}
-			catch(err) {
-				console.log("Here is the error", err);
-			}
+			setInterval(() => {
+				console.log("Visibility State:: ", document.visibilityState)
+				window.focus();
+			    console.log("Has Focus:: ", window.document.hasFocus());
+			}, 5000);
+			
+			setTimeout(() => {
+				if (!windowContext.closed) {
+					alert("Inside tab not closed");
+					//windowContext.close();
+					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+				}
+				else {
+					alert("Tab already closed");
+				}
+			}, 2500);
 		}
 		
 		function checkWithIframe(type) {
