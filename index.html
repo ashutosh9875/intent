@@ -58,11 +58,11 @@
 		function onButtonClick2(type) {
 			let windowContext = window.open(getIntentURL(type), '_blank');
 
-			setInterval(() => {
+			/*setInterval(() => {
 				console.log("Visibility State:: ", document.visibilityState)
 				window.focus();
 			    console.log("Has Focus:: ", window.document.hasFocus());
-			}, 5000);
+			}, 5000);*/
 			
 			setTimeout(() => {
 				if (!windowContext.closed) {
@@ -80,7 +80,7 @@
 		function checkWithIframe(type) {
 			const phonePeURL = getIntentURL(type);
 			
-			setTimeout(() => {
+			setInterval(() => {
 				if (document.visibilityState === "visible") {
 					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
 				}
