@@ -66,6 +66,7 @@
 			
 			
 			setTimeout(() => {
+				alert(windowContext);
 				if (!windowContext.closed) {
 					alert("Inside tab not closed " + windowContext.location.href);
 					//windowContext.close();
