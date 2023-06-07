@@ -57,26 +57,33 @@
 		}
 		
 		function onButtonClick2(type) {
-			let windowContext = window.open(getIntentURL(type), '_blank');
-			/*setInterval(() => {
-				console.log("Visibility State:: ", document.visibilityState)
-				window.focus();
-			    console.log("Has Focus:: ", window.document.hasFocus());
-			}, 5000);*/
+			try{
+				
+				let windowContext = window.open(getIntentURL(type));
+				/*setInterval(() => {
+					console.log("Visibility State:: ", document.visibilityState)
+					window.focus();
+				    console.log("Has Focus:: ", window.document.hasFocus());
+				}, 5000);*/
+
+
+				setTimeout(() => {
+					alert(windowContext);
+					if (!windowContext.closed) {
+						alert("Inside tab not closed " + windowContext.location.href);
+						//windowContext.close();
+
+						document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
+					}
+					else {
+						alert("Tab already closed" + windowContext.location.href);
+					}
+				}, 2500);
+			}
 			
-			
-			setTimeout(() => {
-				alert(windowContext);
-				if (!windowContext.closed) {
-					alert("Inside tab not closed " + windowContext.location.href);
-					//windowContext.close();
-					
-					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-				}
-				else {
-					alert("Tab already closed" + windowContext.location.href);
-				}
-			}, 2500);
+			catch(err) {
+				document.getElementById("mIntentMsg").textContent = JSON.stringify(err)
+			}
 		}
 		
 		function checkWithIframe(type) {
@@ -175,7 +182,7 @@
 	<!---<button onclick="randomCheck()">Check PhonePe</button>-->
 	
 	
-	<a href="intent://pay/#Intent;scheme=upi;package=com.phonepe.app;end"> Click For PhonePEEEEE </a>
+	<a href="www.google.com"> Click For PhonePEEEEE </a>
 	
 	<a href="intent://pay/#Intent;scheme=ppe;package=com.phonepe.app;end"> Click For PhonePEEEEE PPE</a>
 	
