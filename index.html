@@ -128,7 +128,7 @@
 			alert("Failed to launch")
 		}
 		function openDeepLink(type) {
-			window.location.href = getIntentURL(type);
+			window.location = getIntentURL(type);
 			
 			setTimeout(function() {
 				alert("Did it got resolved??")
