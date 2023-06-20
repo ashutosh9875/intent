@@ -182,7 +182,7 @@
 		
 		function testFunction2(url) {
 			
-			let windowContext = window.open(url, '_self');
+			let windowContext = window.open(url, '_blank');
 			const inter = setInterval(function() {
 				if (windowContext && windowContext.closed) {
 					alert("Hurreyyyyy");
