@@ -145,6 +145,7 @@
 			var windowContext = window.open("about:blank");
 
 			windowContext.document.addEventListener("DOMContentLoaded", function(event) {
+				alert("Nooo")
 			  windowContext.tryy();
 			});
 			
@@ -154,6 +155,7 @@
 			
 			windowContext.tryy = function() {
 			  	console.log("Script executed on new tab");
+				alert("Yessss")
 				windowContext.addEventListener("beforeunload", function(event) {
 					alert("Heheheheh")
 					if (window.opener) {
