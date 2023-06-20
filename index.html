@@ -186,7 +186,7 @@
 			const inter = setInterval(function() {
 				if (windowContext && windowContext.closed) {
 					alert("Hurreyyyyy");
-					inter.clear();
+					clearInterval(inter);
 				}
 			}, 200);
 			console.log(windowContext);
