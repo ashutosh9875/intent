@@ -184,12 +184,12 @@
 			
 			let windowContext = window.open(url, '_blank');
 			const inter = setInterval(function() {
-				if (windowContext && windowContext.closed) {
+				alert(windowContext.closed)
+				/*if (windowContext && windowContext.closed) {
 					alert("Hurreyyyyy");
 					clearInterval(inter);
-				}
-			}, 200);
-			console.log(windowContext);
+				}*/
+			}, 5000);
 		}
 	
 	</script>
