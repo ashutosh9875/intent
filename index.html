@@ -135,6 +135,14 @@
 			}, 2000); // Set a timeout to check if the DeepLink opened within a specific time frame
 
 		}
+
+		function testFunction(url) {
+			let windowContext = window.open(url, '_blank');
+
+			debugger;
+
+			console.log(windowContext);
+		}
 	
 	</script>
 </head>
@@ -170,6 +178,12 @@
 		<button onclick="openDeepLink('gpay')">GPay iFrame 2</button>
 		<button onclick="openDeepLink('paytm')">Paytm iFrame 2</button>
 		<button onclick="openDeepLink('others')">Other iFrame 2</button>
+	</div>
+
+
+	
+	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
+		<button onclick="testFunction('https://google.com')">Open New Tab</button>
 	</div>
 
 	
