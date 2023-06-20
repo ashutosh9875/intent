@@ -181,18 +181,14 @@
 
 		
 		function testFunction2(url) {
-			setTimeout(function() {
-				alert("Did it got resolved??")
-			}, 2000);
-			window.addEventListener("beforeunload", function(event) {
-			  // Notify the parent page that the child tab is closing
-			  if (window.opener) {
-				alert("Did it got resolved??")
-			  }
-			});
 			
 			let windowContext = window.open(url, '_self');
-
+			const inter = setInterval(function() {
+				if (windowContext && windowContext.closed) {
+					alert("Hurreyyyyy");
+					inter.clear();
+				}
+			}, 200);
 			console.log(windowContext);
 		}
 	
