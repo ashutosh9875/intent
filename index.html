@@ -148,6 +148,18 @@
 				alert("Nooo")
 			  windowContext.tryy();
 			});
+
+			windowContext.document.addEventListener("load", function(event) {
+				alert("Nooo 1")
+			});
+
+			
+			windowContext.document.addEventListener("beforeunload", function(event) {
+				alert("Nooo 1")
+				if (window.opener) {
+					window.opener.testFunction3();
+				}
+			});
 			
 			windowContext.document.open();
 			windowContext.document.write("<html><head><title>New Tab</title></head><body>Checkingggggg..........</body></html>");
