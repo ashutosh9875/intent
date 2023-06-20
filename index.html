@@ -139,6 +139,11 @@
 		function testFunction(url) {
 			let windowContext = window.open(url, '_blank');
 
+			windowContext.addEventListener("beforeunload", function(event) {
+			  // Custom logic or actions to be executed when the window is closed
+				alert("Did it got resolved??")
+			});
+			
 			debugger;
 
 			console.log(windowContext);
