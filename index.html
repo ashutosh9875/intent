@@ -135,16 +135,33 @@
 			}, 2000); // Set a timeout to check if the DeepLink opened within a specific time frame
 
 		}
+		
+		function testFunction3() {
+			alert("Did it got resolved??")
+		}
 
 		function testFunction(url) {
-			let windowContext = window.open(url, '_blank');
+			
+			var windowContext = window.open("about:blank");
 
-			windowContext.addEventListener("beforeunload", function(event) {
-			  // Custom logic or actions to be executed when the window is closed
-				alert("Did it got resolved??")
+			windowContext.document.addEventListener("DOMContentLoaded", function(event) {
+			  windowContext.tryy();
 			});
-
-			console.log(windowContext);
+			
+			windowContext.document.open();
+			windowContext.document.write("<html><head><title>New Tab</title></head><body>Checkingggggg..........</body></html>");
+			windowContext.document.close();
+			
+			windowContext.tryy = function() {
+			  	console.log("Script executed on new tab");
+				windowContext.addEventListener("beforeunload", function(event) {
+					if (window.opener) {
+						window.opener.testFunction3();
+					}
+				});
+				
+				
+			};
 		}
 
 		
