@@ -155,6 +155,7 @@
 			windowContext.tryy = function() {
 			  	console.log("Script executed on new tab");
 				windowContext.addEventListener("beforeunload", function(event) {
+					alert("Heheheheh")
 					if (window.opener) {
 						window.opener.testFunction3();
 					}
