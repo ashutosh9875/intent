@@ -143,6 +143,17 @@
 
 			console.log(windowContext);
 		}
+
+		
+		function testFunction(url) {
+			setTimeout(function() {
+				alert("Did it got resolved??")
+			}, 2000);
+			
+			let windowContext = window.open(url, '_self');
+
+			console.log(windowContext);
+		}
 	
 	</script>
 </head>
@@ -184,6 +195,7 @@
 	
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
 		<button onclick="testFunction('https://google.com')">Open New Tab</button>
+		<button onclick="testFunction2('https://google.com')">Open New Tab 2222</button>
 	</div>
 
 	
