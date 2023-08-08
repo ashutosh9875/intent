@@ -191,11 +191,21 @@
 				}*/
 			}, 5000);
 		}
+
+		function redirectToBankPage(mode) {
+			const redirectURL = document.getElementById("url").value
+			if (mode === 'NEW_TAB') {
+				window.open(redirectURL, '_blank');
+			}
+			else if(mode === 'SAME_TAB'){
+				window.open(redirectURL);
+			}
+		}
 	
 	</script>
 </head>
 <body onload="onLoadFunc()">
-	<div style="display: block; border:1px solid black; padding: 24px">
+	<!--<div style="display: block; border:1px solid black; padding: 24px">
 
 		<button onclick="onButtonClick('phonepe')">PhonePe</button>
 		<button onclick="onButtonClick('gpay')">GPay</button>
@@ -233,17 +243,25 @@
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
 		<button onclick="testFunction('https://mercury-demo-stg.phonepe.com/payment')">Open New Tab</button>
 		<button onclick="testFunction2('https://mercury-demo-stg.phonepe.com/payment')">Open New Tab 2222</button>
-	</div>
+	</div> -->
 
 	
 	<!---<button onclick="randomCheck()">Check PhonePe</button>-->
 	
 	
-	<a href="http://google.com"> Click For PhonePEEEEE </a>
+	<!--<a href="http://google.com"> Click For PhonePEEEEE </a>
 	
 	<a href="intent://pay/#Intent;scheme=ppe;package=com.phonepe.app;end"> Click For PhonePEEEEE PPE</a>
 	
 	<a href="intent://pay/#Intent;scheme=phonepe;package=com.phonepe.app;end"> Click For PhonePEEEEE PPE</a>
-	<div id="mIntentMsg"></div>
+	<div id="mIntentMsg"></div> -->
+
+	<input type='text' id='url' />
+
+	
+	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
+		<button onclick="redirectToBankPage('SAME_TAB')">Redirect in same tab</button>
+		<button onclick="redirectToBankPage('NEW_TAB')">Redirect in new tab</button>
+	</div>
 </body>
 </html>
