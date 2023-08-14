@@ -218,6 +218,10 @@
 					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
 				});
 			}
+			else if (mode === 'AppIntent') {
+				const intentURL = document.getElementById("intentURL").value;
+				window.open(intentURL)
+			}
 			
 		}
 	
@@ -292,6 +296,7 @@
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
 		<button onclick="initiatePayment('isPaymentSupported')">IsPaymentSupported</button>
 		<button onclick="initiatePayment('PaymentRequest')">PaymentRequest</button>
+		<button onclick="initiatePayment('AppIntent')">App Intent</button>
 	</div>
 
 	<div id="mIntentMsg"></div>
