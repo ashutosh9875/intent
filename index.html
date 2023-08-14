@@ -233,7 +233,7 @@
 				}
 				
 				window && window.PhonePe && window.PhonePe.paymentRequest(paymentData, amount).then(result => {
-					document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
+					document.getElementById("mIntentMsg").textContent = `No Error || App Launched`;
 					
 				}).catch(err => {
 					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
@@ -303,8 +303,8 @@
 		<button onclick="redirectToBankPage('SAME_TAB')">Redirect in same tab</button>
 		<button onclick="redirectToBankPage('NEW_TAB')">Redirect in new tab</button>
 	</div> -->
-	<input type="checkbox" id="canMakePayment" name="canMakePayment" value="canMakePayment">
-	<input type="checkbox" id="hasEnrolledInstrument" name="hasEnrolledInstrument" value="hasEnrolledInstrument">
+	canMakePayment: <input type="checkbox" id="canMakePayment" name="canMakePayment" value="canMakePayment">
+	hasEnrolledInstrument: <input type="checkbox" id="hasEnrolledInstrument" name="hasEnrolledInstrument" value="hasEnrolledInstrument">
 
 	<input type='text' id='mobileNumber' placeholder="mobileNumber" />
 	<input type='text' id='intentURL' placeholder="intentURL" />
