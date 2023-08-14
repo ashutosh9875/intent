@@ -9,7 +9,7 @@
 			padding: 12px;
 		}
 	</style>
-	<script src='https://mercury-stg.phonepe.com/linchpin/sdk/bundle.js'></script>
+	<script src='https://mercury-stg.phonepe.com/linchpin/sdk/0.0.1/phonepe.js'></script>
 	<script type="text/javascript">
 		function onLoadFunc(){
 			//debugger;
@@ -202,6 +202,45 @@
 				window.open(redirectURL, '_self');
 			}
 		}
+
+		function initiatePayment(mode) {
+			
+			if (mode === 'isPaymentSupported') {
+				const canMakePayment = document.getElementById("canMakePayment").checked;
+				const hasEnrolledInstrument = document.getElementById("hasEnrolledInstrument").checked;
+	
+				alert(`${canMakePayment} : canMakePayment`)
+				alert(`${hasEnrolledInstrument} : hasEnrolledInstrument`)
+				let supportedMethod = [];
+				if (canMakePayment) supportedMethod.push('canMakePayment')
+				if (hasEnrolledInstrument) supportedMethod.push('hasEnrolledInstrument')
+				
+				window && window.PhonePe && window.PhonePe.isPaymentSupported(supportedMethod).then(result => {
+					document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
+					
+				}).catch(err => {
+					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
+				});
+			}
+			else if(mode === 'PaymentRequest'){
+				const amount = document.getElementById("amount").value;
+				const intentURL = document.getElementById("intentURL").value;
+				const mobileNumber = document.getElementById("mobileNumber").value;
+
+				const paymentData = {
+					intentURL,
+					mobileNumber
+				}
+				
+				window && window.PhonePe && window.PhonePe.paymentRequest(paymentData, amount).then(result => {
+					document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
+					
+				}).catch(err => {
+					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
+				});
+			}
+			
+		}
 	
 	</script>
 </head>
@@ -257,12 +296,25 @@
 	<a href="intent://pay/#Intent;scheme=phonepe;package=com.phonepe.app;end"> Click For PhonePEEEEE PPE</a>
 	<div id="mIntentMsg"></div> -->
 
-	<input type='text' id='url' />
+	<!--<input type='text' id='url' />
 
 	
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
 		<button onclick="redirectToBankPage('SAME_TAB')">Redirect in same tab</button>
 		<button onclick="redirectToBankPage('NEW_TAB')">Redirect in new tab</button>
+	</div> -->
+	<input type="checkbox" id="canMakePayment" name="canMakePayment" value="canMakePayment">
+	<input type="checkbox" id="hasEnrolledInstrument" name="hasEnrolledInstrument" value="hasEnrolledInstrument">
+
+	<input type='text' id='mobileNumber' placeholder="mobileNumber" />
+	<input type='text' id='intentURL' placeholder="intentURL" />
+	<input type='text' id='amount' placeholder="amount" />
+	
+	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
+		<button onclick="initiatePayment('isPaymentSupported')">IsPaymentSupported</button>
+		<button onclick="initiatePayment('PaymentRequest')">PaymentRequest</button>
 	</div>
+
+	<div id="mIntentMsg"></div>
 </body>
 </html>
