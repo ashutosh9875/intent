@@ -11,7 +11,7 @@
 	</style>
 	<script src='https://mercury-stg.phonepe.com/linchpin/sdk/0.0.1/phonepe.js'></script>
 	<script type="text/javascript">
-		function onLoadFunc(){
+		/*function onLoadFunc(){
 			//debugger;
 			console.log(window.navigator.userAgent)
 			
@@ -35,17 +35,11 @@
 
 
 			}
-		}
+		} 
 		function onButtonClick(type) {
 			alert("Clicked")
 			let windowContext = window.open(getIntentURL(type), '_blank');
 
-			/*setInterval(() => {
-				console.log("Visibility State:: ", document.visibilityState)
-				window.focus();
-			    console.log("Has Focus:: ", window.document.hasFocus());
-			}, 5000);
-			*/
 			setTimeout(() => {
 				if (!windowContext.closed) {
 					alert("Inside tab not closed");
@@ -63,13 +57,7 @@
 			try{
 				
 				let windowContext = window.open(getIntentURL(type));
-				/*setInterval(() => {
-					console.log("Visibility State:: ", document.visibilityState)
-					window.focus();
-				    console.log("Has Focus:: ", window.document.hasFocus());
-				}, 5000);*/
-
-
+				
 				setTimeout(() => {
 					alert(windowContext);
 					if (!windowContext.closed) {
@@ -105,23 +93,8 @@
 			iframe.style.display = "none";
 			iframe.id = "appCheck"
 			iframe.src = getIntentURL(type);
-			/*iframe.onError = iframe.onerror = function (e) {
-				debugger;
-				alert("Error")
-				//document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`;
-			}()*/
-
 			document.body.appendChild(iframe);
 			
-
-
-
-			/*setTimeout(() => {
-					document.getElementById("appCheck").contentWindow.onerror = function () {
-						alert("Error")
-					}()
-			}, 2000);*/			
-
 		}
 		
 		function handleFailedDeepLink() {
@@ -186,10 +159,7 @@
 			let windowContext = window.open(url, '_blank');
 			const inter = setInterval(function() {
 				alert(windowContext.closed)
-				/*if (windowContext && windowContext.closed) {
-					alert("Hurreyyyyy");
-					clearInterval(inter);
-				}*/
+				
 			}, 5000);
 		}
 
@@ -201,7 +171,7 @@
 			else if(mode === 'SAME_TAB'){
 				window.open(redirectURL, '_self');
 			}
-		}
+		} */
 
 		function initiatePayment(mode) {
 			
@@ -244,7 +214,7 @@
 	
 	</script>
 </head>
-<body onload="onLoadFunc()">
+<body>
 	<!--<div style="display: block; border:1px solid black; padding: 24px">
 
 		<button onclick="onButtonClick('phonepe')">PhonePe</button>
@@ -303,12 +273,12 @@
 		<button onclick="redirectToBankPage('SAME_TAB')">Redirect in same tab</button>
 		<button onclick="redirectToBankPage('NEW_TAB')">Redirect in new tab</button>
 	</div> -->
-	canMakePayment: <input type="checkbox" id="canMakePayment" name="canMakePayment" value="canMakePayment">
-	hasEnrolledInstrument: <input type="checkbox" id="hasEnrolledInstrument" name="hasEnrolledInstrument" value="hasEnrolledInstrument">
+	<p>canMakePayment: <input type="checkbox" id="canMakePayment" name="canMakePayment" value="canMakePayment" /></p>
+	<p>hasEnrolledInstrument: <input type="checkbox" id="hasEnrolledInstrument" name="hasEnrolledInstrument" value="hasEnrolledInstrument" /></p>
 
-	<input type='text' id='mobileNumber' placeholder="mobileNumber" />
-	<input type='text' id='intentURL' placeholder="intentURL" />
-	<input type='text' id='amount' placeholder="amount" />
+	<p><input type='text' id='mobileNumber' placeholder="mobileNumber" /> </p>
+	<p><input type='text' id='intentURL' placeholder="intentURL" /></p>
+	<p><input type='text' id='amount' placeholder="amount" /></p>
 	
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
 		<button onclick="initiatePayment('isPaymentSupported')">IsPaymentSupported</button>
