@@ -174,13 +174,14 @@
 		} */
 
 		function initiatePayment(mode) {
+			document.getElementById("mIntentMsg").textContent = "Processing....";
 			
 			if (mode === 'isPaymentSupported') {
 				const canMakePayment = document.getElementById("canMakePayment").checked;
 				const hasEnrolledInstrument = document.getElementById("hasEnrolledInstrument").checked;
 	
-				alert(`${canMakePayment} : canMakePayment`)
-				alert(`${hasEnrolledInstrument} : hasEnrolledInstrument`)
+				// alert(`${canMakePayment} : canMakePayment`)
+				// alert(`${hasEnrolledInstrument} : hasEnrolledInstrument`)
 				let supportedMethod = [];
 				if (canMakePayment) supportedMethod.push('canMakePayment')
 				if (hasEnrolledInstrument) supportedMethod.push('hasEnrolledInstrument')
