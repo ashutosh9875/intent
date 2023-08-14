@@ -202,8 +202,16 @@
 					mobileNumber
 				}
 				
-				window && window.PhonePe && window.PhonePe.paymentRequest(paymentData, amount).then(result => {
+				window && window.PhonePe && window.PhonePe.paymentRequest(paymentData, amount).then(response => {
 					document.getElementById("mIntentMsg").textContent = `No Error || App Launched`;
+					response
+            					.complete("success")
+            					.then(completeResponse => {
+							document.getElementById("mIntentMsg").textContent = `App Launched || Transaction completed`;
+						})
+						.catch(err => {
+							document.getElementById("mIntentMsg").textContent = `App Launched || Error in completing transaction`;
+						})
 					
 				}).catch(err => {
 					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
