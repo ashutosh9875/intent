@@ -9,161 +9,9 @@
 			padding: 12px;
 		}
 	</style>
-	<script src='https://mercury-stg.phonepe.com/linchpin/sdk/0.0.2/phonepe.js'></script>
+	<script src='https://mercury-stg.phonepe.com/linchpin/sdk/0.0.1/phonepe.js'></script>
 	<script type="text/javascript">
-		/*function onLoadFunc(){
-			//debugger;
-			console.log(window.navigator.userAgent)
-			
-			document.getElementById("mIntentMsg").textContent = window.navigator.userAgent;
-			//alert(window.navigator.userAgent);
-		}
-		
-		function getIntentURL(type) {
-			switch(type) {
-				case 'phonepe':
-					return "phonepe://pay?pa=PRODTEST@ybl&pn=PHONEPE&am=1.00&mam=1.00&tr=AW_2991&tn=Payment%20for%20AW_2991&mc=7399&mode=04&purpose=00&gstIn=12ABCDE0123F4G5&utm_campaign=B2B_PG&utm_medium=PRODTEST&utm_source=AW_2991"
-					//return "phonepe://pay?pn=PhonePe&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=8565935689@ybl";
-				case 'gpay':
-					return "gpay://upi/pay?pa=PRODTEST@ybl&pn=PHONEPE&am=1.00&mam=1.00&tr=AW_2991&tn=Payment%20for%20AW_2991&mc=7399&mode=04&purpose=00&gstIn=12ABCDE0123F4G5&utm_campaign=B2B_PG&utm_medium=PRODTEST&utm_source=AW_2991"
-					//return "gpay://upi/pay?pn=PhonePe&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=8565935689@ybl";
-				case 'paytm':
-					return "paytmmp://pay?pa=PRODTEST@ybl&pn=PHONEPE&am=1.00&mam=1.00&tr=AW_2991&tn=Payment%20for%20AW_2991&mc=7399&mode=04&purpose=00&gstIn=12ABCDE0123F4G5&utm_campaign=B2B_PG&utm_medium=PRODTEST&utm_source=AW_2991"
-					//return "paytmmp://pay?pn=PhonePe&tr=EZV2023032215525495141749&tn=Finetshirt&mc=8931&am=1&cu=INR&pa=8565935689@ybl";
-				default :
-					return "upi://pay?pa=PRODTEST@ybl&pn=PHONEPE&am=1.00&mam=1.00&tr=AW_2991&tn=Payment%20for%20AW_2991&mc=7399&mode=04&purpose=00&gstIn=12ABCDE0123F4G5&utm_campaign=B2B_PG&utm_medium=PRODTEST&utm_source=AW_2991";
-
-
-			}
-		} 
-		function onButtonClick(type) {
-			alert("Clicked")
-			let windowContext = window.open(getIntentURL(type), '_blank');
-
-			setTimeout(() => {
-				if (!windowContext.closed) {
-					alert("Inside tab not closed");
-					windowContext.close();
-					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-				}
-				else {
-					alert("Tab already closed");
-				}
-			}, 2500);			
-
-		}
-		
-		function onButtonClick2(type) {
-			try{
-				
-				let windowContext = window.open(getIntentURL(type));
-				
-				setTimeout(() => {
-					alert(windowContext);
-					if (!windowContext.closed) {
-						alert("Inside tab not closed " + windowContext.location.href);
-						//windowContext.close();
-
-						document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-					}
-					else {
-						alert("Tab already closed" + windowContext.location.href);
-					}
-				}, 2500);
-			}
-			
-			catch(err) {
-				document.getElementById("mIntentMsg").textContent = JSON.stringify(err)
-			}
-		}
-		
-		function checkWithIframe(type) {
-			const phonePeURL = getIntentURL(type);
-			
-			setTimeout(() => {
-				if (document.visibilityState === "visible") {
-					document.getElementById("mIntentMsg").textContent = `${type} App not supported on device`
-				}
-				else {
-					document.getElementById("mIntentMsg").textContent = `${type} App opened on device`
-				}
-			}, 2500);
-			
-			const iframe = document.createElement("iframe");
-			iframe.style.display = "none";
-			iframe.id = "appCheck"
-			iframe.src = getIntentURL(type);
-			document.body.appendChild(iframe);
-			
-		}
-		
-		function handleFailedDeepLink() {
-			console.log("Failed to launch deeplink URL because the scheme does not have a registered handler.");
-			alert("Failed to launch")
-		}
-		function openDeepLink(type) {
-			window.location = getIntentURL(type);
-			
-			setTimeout(function() {
-				alert("Did it got resolved??")
-			}, 2000); // Set a timeout to check if the DeepLink opened within a specific time frame
-
-		}
-		
-		function testFunction3() {
-			alert("Did it got resolved??")
-		}
-
-		function testFunction(url) {
-			
-			var windowContext = window.open("about:blank");
-
-			windowContext.document.addEventListener("DOMContentLoaded", function(event) {
-				alert("Nooo")
-			  windowContext.tryy();
-			});
-
-			windowContext.document.addEventListener("load", function(event) {
-				alert("Nooo 1")
-			});
-
-			
-			windowContext.document.addEventListener("beforeunload", function(event) {
-				alert("Nooo 1")
-				if (window.opener) {
-					window.opener.testFunction3();
-				}
-			});
-			
-			windowContext.document.open();
-			windowContext.document.write("<html><head><title>New Tab</title></head><body>Checkingggggg..........</body></html>");
-			windowContext.document.close();
-			
-			windowContext.tryy = function() {
-			  	console.log("Script executed on new tab");
-				alert("Yessss")
-				windowContext.addEventListener("beforeunload", function(event) {
-					alert("Heheheheh")
-					if (window.opener) {
-						window.opener.testFunction3();
-					}
-				});
-				
-				
-			};
-		}
-
-		
-		function testFunction2(url) {
-			
-			let windowContext = window.open(url, '_blank');
-			const inter = setInterval(function() {
-				alert(windowContext.closed)
-				
-			}, 5000);
-		}
-
-		function redirectToBankPage(mode) {
+		/*function redirectToBankPage(mode) {
 			const redirectURL = document.getElementById("url").value
 			if (mode === 'NEW_TAB') {
 				window.open(redirectURL, '_blank');
@@ -196,11 +44,11 @@
 			else if(mode === 'PaymentRequest'){
 				debugger;
 				const amount = document.getElementById("amount").value;
-				const intentURL = document.getElementById("intentURL").value;
+				const intentUrl = document.getElementById("intentURL").value;
 				const mobileNumber = document.getElementById("mobileNumber").value;
 
 				const paymentData = {
-					intentURL,
+					intentUrl,
 					mobileNumber
 				}
 				
@@ -229,57 +77,6 @@
 	</script>
 </head>
 <body>
-	<!--<div style="display: block; border:1px solid black; padding: 24px">
-
-		<button onclick="onButtonClick('phonepe')">PhonePe</button>
-		<button onclick="onButtonClick('gpay')">GPay</button>
-		<button onclick="onButtonClick('paytm')">Paytm</button>
-		<button onclick="onButtonClick('others')">Other</button>
-	</div>
-	
-	<div style="display: block; border:1px solid black; padding: 24px">
-
-		<button onclick="onButtonClick2('phonepe')">PhonePe</button>
-		<button onclick="onButtonClick2('gpay')">GPay</button>
-		<button onclick="onButtonClick2('paytm')">Paytm</button>
-		<button onclick="onButtonClick2('others')">Other</button>
-	</div>
-	
-
-	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<button onclick="checkWithIframe('phonepe')">PhonePe iFrame</button>
-		<button onclick="checkWithIframe('gpay')">GPay iFrame</button>
-		<button onclick="checkWithIframe('paytm')">Paytm iFrame</button>
-		<button onclick="checkWithIframe('others')">Other iFrame</button>
-	</div>
-	
-	
-	
-	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<button onclick="openDeepLink('phonepe')">PhonePe iFrame 2</button>
-		<button onclick="openDeepLink('gpay')">GPay iFrame 2</button>
-		<button onclick="openDeepLink('paytm')">Paytm iFrame 2</button>
-		<button onclick="openDeepLink('others')">Other iFrame 2</button>
-	</div>
-
-
-	
-	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<button onclick="testFunction('https://mercury-demo-stg.phonepe.com/payment')">Open New Tab</button>
-		<button onclick="testFunction2('https://mercury-demo-stg.phonepe.com/payment')">Open New Tab 2222</button>
-	</div> -->
-
-	
-	<!---<button onclick="randomCheck()">Check PhonePe</button>-->
-	
-	
-	<!--<a href="http://google.com"> Click For PhonePEEEEE </a>
-	
-	<a href="intent://pay/#Intent;scheme=ppe;package=com.phonepe.app;end"> Click For PhonePEEEEE PPE</a>
-	
-	<a href="intent://pay/#Intent;scheme=phonepe;package=com.phonepe.app;end"> Click For PhonePEEEEE PPE</a>
-	<div id="mIntentMsg"></div> -->
-
 	<!--<input type='text' id='url' />
 
 	
