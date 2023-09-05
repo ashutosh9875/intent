@@ -41,8 +41,8 @@
 				let supportedMethod = [];
 				if (canMakePayment) supportedMethod.push('canMakePayment')
 				if (hasEnrolledInstrument) supportedMethod.push('hasEnrolledInstrument')
-				merchantConfig[0]?.mIntentSupportedMethod = supportedMethod;
-				merchantConfig[0]?.methods = ["MIntent"];
+				merchantConfig[0].mIntentSupportedMethod = supportedMethod;
+				merchantConfig[0].methods = ["MIntent"];
 				
 				window && window.PhonePe && window.PhonePe.Intent.isAppSupported({merchantConfig}).then(response => console.log(response));
 				
