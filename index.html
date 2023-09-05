@@ -73,7 +73,7 @@
 				}
 
 				
-				window && window.PhonePe && window.PhonePe.paymentRequest(paymentData, amount).then(response => {
+				window && window.PhonePe && window.PhonePe.requestPayment(paymentData).then(response => {
 					document.getElementById("mIntentMsg").textContent = `No Error || App Launched`;
 					response
             					.complete("success")
