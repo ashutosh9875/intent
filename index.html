@@ -45,8 +45,9 @@
 				merchantConfig[0].methods = ["MIntent"];
 				
 				window && window.PhonePe && window.PhonePe.Intent.isAppSupported({merchantConfig}).then(response => {
-					const result = response[0]?.isSupported;
-					document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
+					//const result = response[0]?.isSupported;
+					//document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
+					document.getElementById("mIntentMsg").textContent = JSON.stringify(response);
 				}).catch(err => {
 					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
 				});
