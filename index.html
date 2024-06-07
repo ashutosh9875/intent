@@ -22,6 +22,7 @@
 			}
 		} */
 
+		
 		function initiatePayment(mode) {
 			document.getElementById("mIntentMsg").textContent = "Processing....";
 
@@ -93,7 +94,12 @@
 			}
 			
 		}
-	
+			window.addEventListener('beforeunload', function (e) {
+		            e.preventDefault();
+		            e.returnValue = '';
+				alert("Illeee closingaaaa");
+				setTimeout(() => console.log("Ashutosh closed"), 2000);
+		        });
 	</script>
 </head>
 <body>
