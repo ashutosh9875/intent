@@ -14,33 +14,35 @@
 	
 	<script type="text/javascript">
 		function init () {
+			 fetch('https://api-testing.phonepe.com/apis/hermes/payments/ui/status', {
+			          method: 'GET', // or 'POST', 'PUT', etc., depending on your API requirements
+			          headers: {
+			            'Content-Type': 'application/json', // Specify content type if required
+			            // Add any additional headers if needed, such as authorization tokens
+			            'Authorization': 'Bearer YOUR_TOKEN_HERE',
+			          },
+			        })
+			          .then(response => {
+			            if (!response.ok) {
+			              throw new Error(`HTTP error! Status: ${response.status}`);
+			            }
+			            return response.json(); // Assuming the response is JSON
+			          })
+			          .then(data => {
+			            console.log('Response Data:', data);
+			            // Process the response data
+			          })
+			          .catch(error => {
+			            console.error('Fetch Error:', error);
+			          });
+			
 			window && window.PhonePeCheckout && window.PhonePeCheckout.transact();
 		}
 	</script>
 </head>
 <body>
-	<!--<input type='text' id='url' />
-
-	
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<button onclick="redirectToBankPage('SAME_TAB')">Redirect in same tab</button>
-		<button onclick="redirectToBankPage('NEW_TAB')">Redirect in new tab</button>
-	</div> -->
-	<p>canMakePayment: <input type="checkbox" id="canMakePayment" name="canMakePayment" value="canMakePayment" /></p>
-	<p>hasEnrolledInstrument: <input type="checkbox" id="hasEnrolledInstrument" name="hasEnrolledInstrument" value="hasEnrolledInstrument" /></p>
-
-	<p><input type='text' id='mobileNumber' placeholder="mobileNumber" /> </p>
-	<p><input type='text' id='intentURL' placeholder="intentURL" /></p>
-	<p><input type='text' id='amount' placeholder="amount" /></p>
-	
-	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<!--<button onclick="initiatePayment('isPaymentSupported')">IsPaymentSupported</button>-->
-		<button onclick="init()">PaymentRequest</button>
-		<!--<button onclick="initiatePayment('AppIntent')">App Intent</button>-->
+		<button onclick="init()">Test</button>
 	</div>
-
-	<div id="mIntentMsg"></div>
-
-	<iframe src="https://invokeintent.netlify.app/"></iframe>
 </body>
 </html>
