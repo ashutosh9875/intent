@@ -35,6 +35,27 @@
 			          .catch(error => {
 			            console.error('Fetch Error:', error);
 			          });
+			fetch("https://api-testing.phonepe.com/apis/hermes/checkout/ui/v2/status?t=1736780214553__5", {
+  "headers": {
+    "accept": "application/json, text/plain, */*",
+    "accept-language": "en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
+    "authorization": "Bearer oR0bAwssy7jzfqIe6ZvFT3SgogcQ7j4MIotzHJ/EPEkAHUyn4JLwC7RCD0Vj1pzW7XC8CISEzJvW9RPtApq8WKp+QcBsR+2aJUNaNUK4IoKm4aVX3725Lv0jLtoPKxEIggQekNWp5itRmktFQS78zNrGfbluyAzfP051rxqC6ISurSXlMs9wnam0FVjtAAOR9FyGtOi3CeRdzIZX7Mpumrdhlr+MG98XCw8g53qmnCTWVZENSn5FzXHuO/HevvK9YAl/iKu71jOFSrh5K8UBWYlzd0Id+sPW7QX9MtJTkxRNw3R38W8UOottgum78Mhukm9t1LzTnzs3Jm3bFdva67VLEsWN+KkG+urF3yG+qL0TigbLK+MAYXMTUi9AGcZVGTU2jyuaUsj7p0/gsoja+aauyGNUsK8GI5lVEUABi3N1eHKt4bFxBYfedUCL5hylcwdxZw91RAp7HQ8aM0P2G/U+Fnga2nSlHn+520pHjGi7tDh6QH8/MGOTsZE6GA==",
+    "cache-control": "no-cache",
+    "pragma": "no-cache",
+    "priority": "u=1, i",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "x-auth-token": "oR0bAwssy7jzfqIe6ZvFT3SgogcQ7j4MIotzHJ/EPEkAHUyn4JLwC7RCD0Vj1pzW7XC8CISEzJvW9RPtApq8WKp+QcBsR+2aJUNaNUK4IoKm4aVX3725Lv0jLtoPKxEIggQekNWp5itRmktFQS78zNrGfbluyAzfP051rxqC6ISurSXlMs9wnam0FVjtAAOR9FyGtOi3CeRdzIZX7Mpumrdhlr+MG98XCw8g53qmnCTWVZENSn5FzXHuO/HevvK9YAl/iKu71jOFSrh5K8UBWYlzd0Id+sPW7QX9MtJTkxRNw3R38W8UOottgum78Mhukm9t1LzTnzs3Jm3bFdva67VLEsWN+KkG+urF3yG+qL0TigbLK+MAYXMTUi9AGcZVGTU2jyuaUsj7p0/gsoja+aauyGNUsK8GI5lVEUABi3N1eHKt4bFxBYfedUCL5hylcwdxZw91RAp7HQ8aM0P2G/U+Fnga2nSlHn+520pHjGi7tDh6QH8/MGOTsZE6GA==",
+    "x-browser-fingerprint": "1e9d63d6dac642790ef5bc0ee8937786"
+  },
+  "referrer": "https://mercury-stg.phonepe.com/",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "include"
+});
 			
 			window && window.PhonePeCheckout && window.PhonePeCheckout.transact();
 		}
