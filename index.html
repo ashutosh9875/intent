@@ -9,96 +9,13 @@
 			padding: 12px;
 		}
 	</style>
-	<script src='https://mercury-stg.phonepe.com/web/bundle/intent.js'></script>
+	
+	<script src='https://mercury-stg.phonepe.com/web/bundle/sdk.js'></script>
 	
 	<script type="text/javascript">
-		/*function redirectToBankPage(mode) {
-			const redirectURL = document.getElementById("url").value
-			if (mode === 'NEW_TAB') {
-				window.open(redirectURL, '_blank');
-			}
-			else if(mode === 'SAME_TAB'){
-				window.open(redirectURL, '_self');
-			}
-		} */
-
-		
-		function initiatePayment(mode) {
-			document.getElementById("mIntentMsg").textContent = "Processing....";
-
-			const merchantConfig = [
-				{
-					name: "PHONEPE",
-					// methods: ["MIntent", "AppIntent"],
-					mIntentSupportedMethod: ['canMakePayment'],
-					order: 1
-				}
-			]
-			
-			if (mode === 'isPaymentSupported') {
-				const canMakePayment = document.getElementById("canMakePayment").checked;
-				const hasEnrolledInstrument = document.getElementById("hasEnrolledInstrument").checked;
-	
-				let supportedMethod = [];
-				if (canMakePayment) supportedMethod.push('canMakePayment')
-				if (hasEnrolledInstrument) supportedMethod.push('hasEnrolledInstrument')
-				merchantConfig[0].mIntentSupportedMethod = supportedMethod;
-				merchantConfig[0].methods = ["MIntent"];
-				
-				window && window.PhonePe && window.PhonePe.Intent.isAppSupported({merchantConfig}).then(response => {
-					const result = response[0]?.isSupported;
-					document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
-					//document.getElementById("mIntentMsg").textContent = JSON.stringify(response);
-				}).catch(err => {
-					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
-				});
-				
-				/*window && window.PhonePe && window.PhonePe.isPaymentSupported(supportedMethod).then(result => {
-					document.getElementById("mIntentMsg").textContent = `No Error || Result for MIntent ${result}`;
-					
-				}).catch(err => {
-					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
-				});*/
-			}
-			else if(mode === 'PaymentRequest'){
-				const amount = document.getElementById("amount").value;
-				const intentUrl = document.getElementById("intentURL").value;
-				const mobileNumber = document.getElementById("mobileNumber").value;
-
-				const paymentData = {
-					intentData: {intentUrl},
-					transactionAmount: amount,
-					appName: "PHONEPE",
-					mobileNumber
-				}
-
-				
-				window && window.PhonePe && window.PhonePe.Intent.requestPayment(paymentData).then(response => {
-					document.getElementById("mIntentMsg").textContent = `No Error || App Launched`;
-					response
-            					.complete("success")
-            					.then(completeResponse => {
-							document.getElementById("mIntentMsg").textContent = `App Launched || Transaction completed`;
-						})
-						.catch(err => {
-							document.getElementById("mIntentMsg").textContent = `App Launched || Error in completing transaction`;
-						})
-					
-				}).catch(err => {
-					document.getElementById("mIntentMsg").textContent = "Error while isPaymentSupported";
-				});
-			}
-			else if (mode === 'AppIntent') {
-				const intentURL = document.getElementById("intentURL").value;
-				window.open(intentURL)
-			}
-			
+		function init () {
+			window && window.PhonePeCheckout && window.PhonePeCheckout.transact();
 		}
-			window.addEventListener('beforeunload', function (e) {
-		            e.preventDefault();
-		            	alert("Illeee closingaaaa");
-				setTimeout(() => console.log("Ashutosh closed"), 2000);
-		        });
 	</script>
 </head>
 <body>
@@ -117,8 +34,8 @@
 	<p><input type='text' id='amount' placeholder="amount" /></p>
 	
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
-		<button onclick="initiatePayment('isPaymentSupported')">IsPaymentSupported</button>
-		<button onclick="initiatePayment('PaymentRequest')">PaymentRequest</button>
+		<!--<button onclick="initiatePayment('isPaymentSupported')">IsPaymentSupported</button>-->
+		<button onclick="init()">PaymentRequest</button>
 		<!--<button onclick="initiatePayment('AppIntent')">App Intent</button>-->
 	</div>
 
