@@ -14,39 +14,21 @@
 	
 	<script type="text/javascript">
 		function init () {
-			 fetch('https://api-testing.phonepe.com/apis/hermes/payments/ui/status', {
-			          method: 'GET', // or 'POST', 'PUT', etc., depending on your API requirements
-			          headers: {
-			            'Content-Type': 'application/json', // Specify content type if required
-			            // Add any additional headers if needed, such as authorization tokens
-			            'Authorization': 'Bearer YOUR_TOKEN_HERE',
-			          },
-			        })
-			          .then(response => {
-			            if (!response.ok) {
-			              throw new Error(`HTTP error! Status: ${response.status}`);
-			            }
-			            return response.json(); // Assuming the response is JSON
-			          })
-			          .then(data => {
-			            console.log('Response Data:', data);
-			            // Process the response data
-			          })
-			          .catch(error => {
-			            console.error('Fetch Error:', error);
-			          });
+			const token = document.getElementById("intentURL").value;
+			window && window.PhonePeCheckout && window.PhonePeCheckout.transact(token);
+			 
 			fetch("https://api-testing.phonepe.com/apis/hermes/checkout/ui/v2/status?t=1736780214553__5", {
   "headers": {
     "accept": "application/json, text/plain, */*",
     "accept-language": "en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7",
-    "authorization": "Bearer oR0bAwssy7jzfqIe6ZvFT3SgogcQ7j4MIotzHJ/EPEkAHUyn4JLwC7RCD0Vj1pzW7XC8CISEzJvW9RPtApq8WKp+QcBsR+2aJUNaNUK4IoKm4aVX3725Lv0jLtoPKxEIggQekNWp5itRmktFQS78zNrGfbluyAzfP051rxqC6ISurSXlMs9wnam0FVjtAAOR9FyGtOi3CeRdzIZX7Mpumrdhlr+MG98XCw8g53qmnCTWVZENSn5FzXHuO/HevvK9YAl/iKu71jOFSrh5K8UBWYlzd0Id+sPW7QX9MtJTkxRNw3R38W8UOottgum78Mhukm9t1LzTnzs3Jm3bFdva67VLEsWN+KkG+urF3yG+qL0TigbLK+MAYXMTUi9AGcZVGTU2jyuaUsj7p0/gsoja+aauyGNUsK8GI5lVEUABi3N1eHKt4bFxBYfedUCL5hylcwdxZw91RAp7HQ8aM0P2G/U+Fnga2nSlHn+520pHjGi7tDh6QH8/MGOTsZE6GA==",
+    "authorization": `Bearer ${token}`,
     "cache-control": "no-cache",
     "pragma": "no-cache",
     "priority": "u=1, i",
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-site",
-    "x-auth-token": "oR0bAwssy7jzfqIe6ZvFT3SgogcQ7j4MIotzHJ/EPEkAHUyn4JLwC7RCD0Vj1pzW7XC8CISEzJvW9RPtApq8WKp+QcBsR+2aJUNaNUK4IoKm4aVX3725Lv0jLtoPKxEIggQekNWp5itRmktFQS78zNrGfbluyAzfP051rxqC6ISurSXlMs9wnam0FVjtAAOR9FyGtOi3CeRdzIZX7Mpumrdhlr+MG98XCw8g53qmnCTWVZENSn5FzXHuO/HevvK9YAl/iKu71jOFSrh5K8UBWYlzd0Id+sPW7QX9MtJTkxRNw3R38W8UOottgum78Mhukm9t1LzTnzs3Jm3bFdva67VLEsWN+KkG+urF3yG+qL0TigbLK+MAYXMTUi9AGcZVGTU2jyuaUsj7p0/gsoja+aauyGNUsK8GI5lVEUABi3N1eHKt4bFxBYfedUCL5hylcwdxZw91RAp7HQ8aM0P2G/U+Fnga2nSlHn+520pHjGi7tDh6QH8/MGOTsZE6GA==",
+    "x-auth-token": token,
     "x-browser-fingerprint": "1e9d63d6dac642790ef5bc0ee8937786"
   },
   "referrer": "https://mercury-stg.phonepe.com/",
@@ -57,12 +39,12 @@
   "credentials": "include"
 });
 			
-			window && window.PhonePeCheckout && window.PhonePeCheckout.transact();
 		}
 	</script>
 </head>
 <body>
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
+		<p><input type='text' id='intentURL' placeholder="intentURL" /></p>
 		<button onclick="init()">Test</button>
 	</div>
 </body>
