@@ -13,6 +13,17 @@
 	<script src='https://mercury-stg.phonepe.com/web/bundle/sdk.js'></script>
 	
 	<script type="text/javascript">
+		function test () {
+const handleBeforeUnload = event => {
+      if (true) {
+        event.preventDefault();
+        event.returnValue = "";
+      }
+    };
+
+    window.addEventListener("pagehide", handleBeforeUnload);
+}
+		
 		function init () {
 			const token = document.getElementById("intentURL").value;
 			window && window.PhonePeCheckout && window.PhonePeCheckout.transact(token);
@@ -42,7 +53,7 @@
 		}
 	</script>
 </head>
-<body>
+<body onload="test()">
 	<div style="display: block; border:1px solid black; padding: 24px; margin-top: 12px;">
 		<p><input type='text' id='intentURL' placeholder="intentURL" /></p>
 		<button onclick="init()">Test</button>
