@@ -15,7 +15,7 @@
 	<script type="text/javascript">
 		function test () {
 const handleBeforeUnload = event => {
-      if (true) {
+      if (event.persisted) {
         event.preventDefault();
         event.returnValue = "";
       }
