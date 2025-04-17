@@ -21,7 +21,7 @@ const handleBeforeUnload = event => {
       }
     };
 
-    window.addEventListener("pagehide", handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 }
 		
 		function init () {
